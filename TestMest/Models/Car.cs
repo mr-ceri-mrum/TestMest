@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace TestMest.Models;
@@ -11,16 +12,12 @@ public class Car
         ColorId = colorId;
     }
 
-    public Car()
-    {
-        
-    }
-
-
+    public Car() { }
+    
     public int Id { get; set; }
+    [ForeignKey(nameof(Color))]
     public int ColorId { get; set; }
     public virtual Color Color { get; set; }
     public string BrandName { get; set; }
     public string? ModelName { get; set; }
-    
 }

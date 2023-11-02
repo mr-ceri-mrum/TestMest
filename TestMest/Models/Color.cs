@@ -7,11 +7,8 @@ public class Color
         ColorName = colorName;
     }
 
-    public Color()
-    {
-       
-    }
-
+    public Color() { }
+    
     public int Id { get; set; }
     public string ColorName { get; set; }
 }

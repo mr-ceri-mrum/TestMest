@@ -22,6 +22,7 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>()
 
 
 builder.Services.AddTransient<ICarService, CarService>();
+builder.Services.AddTransient<IColorService, ColorService>();
 
 builder.Services.AddAuthorization();
 

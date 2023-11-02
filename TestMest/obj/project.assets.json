@@ -3018,11 +3018,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ilyas\\RiderProjects\\TestMest\\TestMest\\TestMest.csproj",
+      "projectUniqueName": "C:\\Users\\Ilyas\\Desktop\\TestTaskIlyas\\TestMest\\TestMest\\TestMest.csproj",
       "projectName": "TestMest",
-      "projectPath": "C:\\Users\\Ilyas\\RiderProjects\\TestMest\\TestMest\\TestMest.csproj",
+      "projectPath": "C:\\Users\\Ilyas\\Desktop\\TestTaskIlyas\\TestMest\\TestMest\\TestMest.csproj",
       "packagesPath": "C:\\Users\\Ilyas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ilyas\\RiderProjects\\TestMest\\TestMest\\obj\\",
+      "outputPath": "C:\\Users\\Ilyas\\Desktop\\TestTaskIlyas\\TestMest\\TestMest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ilyas\\AppData\\Roaming\\NuGet\\NuGet.Config"
