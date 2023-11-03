@@ -1,0 +1,63 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace TestMest.Migrations
+{
+    /// <inheritdoc />
+    public partial class CarStatus : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DeleteData(
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "799cdc6e-6095-40fd-accd-ebf731b56fd0");
+
+            migrationBuilder.AddColumn<int>(
+                name: "StatusCar",
+                table: "Cars",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "107ddf24-d5e3-4519-8584-2900f7626b48", 0, "f3153109-71e9-4109-964b-9f2038c703a0", "Ilyas@mail.com", false, true, null, null, null, "AQAAAAIAAYagAAAAEIFHqhDboJkEoR8KfKdUBgo+BTdeFp5Ff/+3W/cBo4kYImOfRc7H136eXRWS+ANOMQ==", null, false, "MKMGDOFK6H75S3G2X4AZS73R4Z7B7OQ3", false, "root@mail.com" });
+
+            migrationBuilder.UpdateData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "StatusCar",
+                value: 0);
+
+            migrationBuilder.UpdateData(
+                table: "Cars",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "StatusCar",
+                value: 0);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DeleteData(
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "107ddf24-d5e3-4519-8584-2900f7626b48");
+
+            migrationBuilder.DropColumn(
+                name: "StatusCar",
+                table: "Cars");
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "799cdc6e-6095-40fd-accd-ebf731b56fd0", 0, "f3153109-71e9-4109-964b-9f2038c703a0", "Ilyas@mail.com", false, true, null, null, null, "AQAAAAIAAYagAAAAEIFHqhDboJkEoR8KfKdUBgo+BTdeFp5Ff/+3W/cBo4kYImOfRc7H136eXRWS+ANOMQ==", null, false, "MKMGDOFK6H75S3G2X4AZS73R4Z7B7OQ3", false, "root@mail.com" });
+        }
+    }
+}
