@@ -13,15 +13,15 @@ public class CarService : ICarService
     {
         _context = context;
     }
-
-    public async Task<List<Car>> GetCars()
+    
+    public async Task<IQueryable<Car>> GetCars()
     {
         try
         {
-            var result = await _context.Set<Car>()
+            var result = _context.Set<Car>()
                 .Include(x => x.Color)
-                .AsNoTracking()
-                .ToListAsync();
+                .AsNoTracking();
+            
             return result;
         }
         catch (Exception e)
@@ -36,18 +36,15 @@ public class CarService : ICarService
         try
         {
             var car = await _context.Cars.FirstOrDefaultAsync(x  => x.Id == id);
-        
-            if (car != null)
-            {
-                car.BrandName = carView.BrandName ?? car.BrandName;
-                car.ColorId = carView.ColorId ?? car.ColorId;
-                car.ModelName = carView.ModelName ?? car.ModelName;
+            if (car == null) return null;
             
-                _context.Cars.Update(car);
-                await _context.SaveChangesAsync();
-                return car;
-            }
-            return null;
+            car.BrandName = carView.BrandName ?? car.BrandName;
+            car.ColorId = carView.ColorId ?? car.ColorId;
+            car.ModelName = carView.ModelName ?? car.ModelName;
+            
+            _context.Cars.Update(car);
+            await _context.SaveChangesAsync();
+            return car;
         }
         catch (Exception e)
         {
