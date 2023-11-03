@@ -1,4 +1,4 @@
-namespace TestMest.Models;
+namespace TestMest.Models.Entitys;
 
 public class Color
 {

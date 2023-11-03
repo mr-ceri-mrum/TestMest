@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using TestMest.Data;
 using Swashbuckle.AspNetCore.Filters;
 using TestMest.Interfaces;
+using TestMest.Models;
 using TestMest.Services;
 
 
@@ -23,7 +24,6 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>()
 
 builder.Services.AddTransient<ICarService, CarService>();
 builder.Services.AddTransient<IColorService, ColorService>();
-
 builder.Services.AddAuthorization();
 
 builder.Services.AddSwaggerGen(options =>
@@ -38,6 +38,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddControllers();
 

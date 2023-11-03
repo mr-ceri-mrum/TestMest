@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using TestMest.Models.Enums;
 
-namespace TestMest.Models;
+namespace TestMest.Models.Entitys;
 
 public class Car
 {

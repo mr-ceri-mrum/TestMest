@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mXe5XRS3F8PfshECH5/ve6Wy32uvalHqGmpobk0WDwQdaX3xm52wCAIAflNYT7UCvzkxHB/gvh3W0y2KRpN2WQ==",
+  "dgSpecHash": "alJ+pNPNE/vzFjdvr0AEzuGxK8UOJiXdNy6Nagdw+Josay1PDv4e5ZZcipxPvBOWIUWGXdNgWtXHXWYFhVfsSg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ilyas\\Desktop\\TestTaskIlyas\\TestMest\\TestMest\\TestMest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ilyas\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Ilyas\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0-preview.7.23375.9\\microsoft.aspnetcore.cryptography.internal.8.0.0-preview.7.23375.9.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.0-preview.7.23375.9\\microsoft.aspnetcore.cryptography.keyderivation.8.0.0-preview.7.23375.9.nupkg.sha512",
@@ -15,6 +17,7 @@
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.5.0\\microsoft.codeanalysis.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\4.5.0\\microsoft.codeanalysis.csharp.workspaces.4.5.0.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.5.0\\microsoft.codeanalysis.workspaces.common.4.5.0.nupkg.sha512",
+    "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.0-rc.2.23480.1\\microsoft.entityframeworkcore.8.0.0-rc.2.23480.1.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.0-rc.2.23480.1\\microsoft.entityframeworkcore.abstractions.8.0.0-rc.2.23480.1.nupkg.sha512",
     "C:\\Users\\Ilyas\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.0-rc.2.23480.1\\microsoft.entityframeworkcore.analyzers.8.0.0-rc.2.23480.1.nupkg.sha512",

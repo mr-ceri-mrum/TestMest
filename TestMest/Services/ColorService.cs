@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TestMest.Data;
 using TestMest.Interfaces;
 using TestMest.Models.ActionResult;
-using Color = TestMest.Models.Color;
+using Color = TestMest.Models.Entitys.Color;
 
 namespace TestMest.Services;
 

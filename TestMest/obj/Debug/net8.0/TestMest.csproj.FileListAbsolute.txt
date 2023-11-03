@@ -217,3 +217,5 @@ C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\obj\Debug\net8.0\refint\T
 C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\obj\Debug\net8.0\TestMest.pdb
 C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\obj\Debug\net8.0\TestMest.genruntimeconfig.cache
 C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\obj\Debug\net8.0\ref\TestMest.dll
+C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Ilyas\Desktop\TestTaskIlyas\TestMest\TestMest\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

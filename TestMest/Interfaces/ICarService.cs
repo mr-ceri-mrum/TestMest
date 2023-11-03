@@ -12,4 +12,5 @@ public interface ICarService
     Task<ActionMethodResult> CreateCar(CreatCarView carView);
     Task<ActionMethodResult> UpdateCar(int id,CarView carView);
     Task<ActionMethodResult> BuyCar(int id);
+    Task<ActionMethodResult> GetCarById(int id);
 }

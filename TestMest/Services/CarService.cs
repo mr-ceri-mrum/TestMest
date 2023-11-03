@@ -1,9 +1,11 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TestMest.Data;
 using TestMest.Helper;
 using TestMest.Interfaces;
 using TestMest.Models;
 using TestMest.Models.ActionResult;
+using TestMest.Models.Entitys;
 using TestMest.Models.Enums;
 using TestMest.Models.Views;
 
@@ -12,9 +14,12 @@ namespace TestMest.Services;
 public class CarService : ICarService
 {
     private readonly DataContext _context;
-    public CarService(DataContext context)
+    private readonly IMapper _mapper;
+
+    public CarService(DataContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
     
     public async Task<ActionMethodResult> GetCars()
@@ -22,9 +27,9 @@ public class CarService : ICarService
         try
         {
             var result = _context.Set<Car>()
-                .Include(x => x.Color)
                 .Where(x => x.StatusCar == StatusCar.InStock)
-                .AsNoTracking();
+                .AsNoTracking()
+                .AsQueryable();
             
             return ActionMethodResult.Success(result);
         }
@@ -49,7 +54,9 @@ public class CarService : ICarService
             
             _context.Cars.Update(car);
             await _context.SaveChangesAsync();
-            return ActionMethodResult.Success(car);
+            var result = _mapper.Map<Car, CarView>(car);
+            
+            return ActionMethodResult.Success(result);            
         }
         catch (Exception e)
         {
@@ -106,8 +113,29 @@ public class CarService : ICarService
             car.StatusCar = StatusCar.NotAvailable;
             _context.Cars.Update(car);
             await _context.SaveChangesAsync();
-                
-            return ActionMethodResult.Success(car);
+            
+            var result = _mapper.Map<Car, CarView>(car);
+            
+            return ActionMethodResult.Success(result);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public async Task<ActionMethodResult> GetCarById(int id)
+    {
+        try
+        {
+            var car =  await _context.Cars.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (car == null)
+                return ActionMethodResult.Error(MessageHelper.NotFound());
+            var result = _mapper.Map<Car, CarView>(car);
+            
+            return ActionMethodResult.Success(result);
         }
         catch (Exception e)
         {
