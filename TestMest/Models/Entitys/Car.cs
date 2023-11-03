@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using TestMest.Models.Enums;
 
 namespace TestMest.Models;
 
@@ -20,4 +21,6 @@ public class Car
     public virtual Color Color { get; set; }
     public string BrandName { get; set; }
     public string? ModelName { get; set; }
+    
+    public StatusCar StatusCar { get; set; } = StatusCar.InStock;
 }

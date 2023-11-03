@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TestMest.Data;
 using TestMest.Interfaces;
+using TestMest.Models.ActionResult;
 using Color = TestMest.Models.Color;
 
 namespace TestMest.Services;
@@ -14,7 +15,7 @@ public class ColorService : IColorService
         _context = context;
     }
     
-    public async Task<Color> AddColor(string colorName)
+    public async Task<ActionMethodResult> AddColor(string colorName)
     {
         try
         {
@@ -22,7 +23,7 @@ public class ColorService : IColorService
             await _context.Colors.AddAsync(color);
             await _context.SaveChangesAsync();
             
-            return color;
+            return ActionMethodResult.Success(color);
         }
         catch (Exception e)
         {
@@ -31,12 +32,12 @@ public class ColorService : IColorService
         }
     }
     
-    public IQueryable<Color> GetAllColors()
+    public async Task<ActionMethodResult> GetAllColors()
     {
         try
         {
             var colors = _context.Colors.AsNoTracking().AsQueryable();
-            return colors;
+            return ActionMethodResult.Success(colors);
         }
         catch (Exception e)
         {

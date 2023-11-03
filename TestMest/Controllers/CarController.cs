@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TestMest.Interfaces;
-using TestMest.Models.ModelViews;
+using TestMest.Models.Views;
 
 namespace TestMest.Controllers;
 [Authorize]
@@ -10,7 +10,6 @@ namespace TestMest.Controllers;
 public class CarController : ControllerBase
 {
     private readonly ICarService _carService;
-
     public CarController(ICarService carService)
     {
         _carService = carService;
@@ -23,13 +22,10 @@ public class CarController : ControllerBase
         return Ok(result);
     }
     
-     
     [HttpDelete("DeleteCar")]
     public async Task<IActionResult> DeleteCar(int id)
     {
         var result = await _carService.DeleteCar(id);
-        if (result == null)
-            return BadRequest("Not found car");
         return Ok(result);
     }
     
@@ -44,8 +40,13 @@ public class CarController : ControllerBase
     public async Task<IActionResult> UpdateCar( int id, [FromForm] CarView carView)
     {
         var result = await _carService.UpdateCar(id,carView);
-        if (result == null)
-            return BadRequest("not found car");
         return Ok(result); 
     }
-}
+
+    [HttpPut("BuyCar")]
+    public async Task<IActionResult> BuyCar(int id)
+    {
+        var result = await _carService.BuyCar(id);
+        return Ok(result);
+    }
+} 

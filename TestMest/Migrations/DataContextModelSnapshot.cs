@@ -139,7 +139,7 @@ namespace TestMest.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "799cdc6e-6095-40fd-accd-ebf731b56fd0",
+                            Id = "107ddf24-d5e3-4519-8584-2900f7626b48",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "f3153109-71e9-4109-964b-9f2038c703a0",
                             Email = "Ilyas@mail.com",
@@ -252,6 +252,9 @@ namespace TestMest.Migrations
                     b.Property<string>("ModelName")
                         .HasColumnType("text");
 
+                    b.Property<int>("StatusCar")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ColorId");
@@ -264,14 +267,16 @@ namespace TestMest.Migrations
                             Id = 1,
                             BrandName = "Mers",
                             ColorId = 1,
-                            ModelName = "s"
+                            ModelName = "s",
+                            StatusCar = 0
                         },
                         new
                         {
                             Id = 2,
                             BrandName = "Telsa",
                             ColorId = 1,
-                            ModelName = "Y"
+                            ModelName = "Y",
+                            StatusCar = 0
                         });
                 });
 

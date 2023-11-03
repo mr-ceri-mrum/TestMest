@@ -1,8 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using TestMest.Data;
+using TestMest.Helper;
 using TestMest.Interfaces;
 using TestMest.Models;
-using TestMest.Models.ModelViews;
+using TestMest.Models.ActionResult;
+using TestMest.Models.Enums;
+using TestMest.Models.Views;
 
 namespace TestMest.Services;
 
@@ -14,15 +17,16 @@ public class CarService : ICarService
         _context = context;
     }
     
-    public async Task<IQueryable<Car>> GetCars()
+    public async Task<ActionMethodResult> GetCars()
     {
         try
         {
             var result = _context.Set<Car>()
                 .Include(x => x.Color)
+                .Where(x => x.StatusCar == StatusCar.InStock)
                 .AsNoTracking();
             
-            return result;
+            return ActionMethodResult.Success(result);
         }
         catch (Exception e)
         {
@@ -31,12 +35,13 @@ public class CarService : ICarService
         }
     }
 
-    public async Task<Car?> UpdateCar( int id,CarView carView)
+    public async Task<ActionMethodResult> UpdateCar( int id,CarView carView)
     {
         try
         {
             var car = await _context.Cars.FirstOrDefaultAsync(x  => x.Id == id);
-            if (car == null) return null;
+            if (car == null) 
+                return ActionMethodResult.Error(MessageHelper.NotFound());
             
             car.BrandName = carView.BrandName ?? car.BrandName;
             car.ColorId = carView.ColorId ?? car.ColorId;
@@ -44,7 +49,7 @@ public class CarService : ICarService
             
             _context.Cars.Update(car);
             await _context.SaveChangesAsync();
-            return car;
+            return ActionMethodResult.Success(car);
         }
         catch (Exception e)
         {
@@ -53,7 +58,7 @@ public class CarService : ICarService
         }
     }
 
-    public async Task<Car> CreateCar(CreatCarView carView)
+    public async Task<ActionMethodResult> CreateCar(CreatCarView carView)
     {
         try
         {
@@ -61,7 +66,7 @@ public class CarService : ICarService
             await _context.Cars.AddAsync(car);
             await _context.SaveChangesAsync();
         
-            return car;
+            return ActionMethodResult.Success(car);
         }
         catch (Exception e)
         {
@@ -70,17 +75,17 @@ public class CarService : ICarService
         }
     }
 
-    public async Task<Car?> DeleteCar(int id)
+    public async Task<ActionMethodResult> DeleteCar(int id)
     {
         try
         {
             var car = await _context.Cars.FirstOrDefaultAsync(x => x.Id == id);
             if (car == null)
-                return null;
+                return ActionMethodResult.Error(MessageHelper.NotFound());
             _context.Cars.Remove(car);
             
             await _context.SaveChangesAsync();
-            return car;
+            return ActionMethodResult.Success(MessageHelper.DeleteSuccess());
         }
         catch (Exception e)
         {
@@ -89,30 +94,20 @@ public class CarService : ICarService
         }
     }
 
-    public async Task<List<Color>> GetAllColors()
+
+    public async Task<ActionMethodResult> BuyCar(int id)
     {
         try
         {
-            var colors = await _context.Colors.AsNoTracking().ToListAsync();
-            return colors;
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
-    
-    public async Task<Color> AddColor(string colorName)
-    {
-        try
-        {
-            var color = new Color(colorName);
+            var car = await _context.Cars.Include(x => x.Color).FirstOrDefaultAsync(x => x.Id == id);
+            if (car == null) 
+                return ActionMethodResult.Error(MessageHelper.NotFound());
             
-            await _context.Colors.AddAsync(color);
+            car.StatusCar = StatusCar.NotAvailable;
+            _context.Cars.Update(car);
             await _context.SaveChangesAsync();
-
-            return color;
+                
+            return ActionMethodResult.Success(car);
         }
         catch (Exception e)
         {
